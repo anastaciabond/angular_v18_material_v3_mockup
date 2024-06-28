@@ -1,1 +1,63 @@
 <p>second works!</p>
+<div class="controls-grid">
+    <mat-card class="grid-md-col-3 grid-xl-col-3">
+        <mat-card-content>
+            <mat-form-field>
+                <mat-label>Choose an option</mat-label>
+                <mat-select>
+                    <mat-option value="option1">Option 1</mat-option>
+                    <mat-option value="option2" disabled>Option 2 (disabled)</mat-option>
+                    <mat-option value="option3">Option 3</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </mat-card-content>
+    </mat-card>
+    <mat-card class="grid-md-col-3 grid-xl-col-3">
+        <mat-card-content class="controls-flex" style="height: 100%;">            
+            <p>CTR Mode:</p>
+            <mat-button-toggle-group
+                class="mat-button-toggle-group-custom-density"
+                name="favoriteColor"
+                aria-label="Favorite Color"
+                [hideSingleSelectionIndicator]="true"
+            >
+                <mat-button-toggle value="red">Red</mat-button-toggle>
+                <mat-button-toggle value="green">Green</mat-button-toggle>
+                <mat-button-toggle value="blue">Blue</mat-button-toggle>
+            </mat-button-toggle-group>
+        </mat-card-content>
+    </mat-card>
+    <mat-card class="grid-md-col-1 grid-xl-col-1">
+        <mat-card-content class="controls-flex" style="height: 100%;">
+            <mat-slide-toggle class="mat-slide-toggle-custom-density">Slide me!</mat-slide-toggle>
+        </mat-card-content>
+    </mat-card>
+    <mat-card class="grid-md-col-5 grid-xl-col-5">
+        <mat-card-content class="controls-flex" style="height: 100%;">
+            <button mat-icon-button aria-label="Example icon button with a vertical three dot icon">
+                <mat-icon>play_arrow</mat-icon>
+            </button>
+            <mat-chip-set aria-label="Fish selection">
+                <div class="mat-chip-custom-block">
+                    <p class="mat-chip-custom-title">Prices for:</p>
+                    <mat-chip>One fish</mat-chip>
+                </div>
+                <div class="mat-chip-custom-block">
+                    <p class="mat-chip-custom-title">SPY latest update:</p>
+                    <mat-chip>Two fish</mat-chip>
+                </div>
+                <div class="mat-chip-custom-block">
+                    <p class="mat-chip-custom-title">Basket date:</p>
+                    <mat-chip>Three fish</mat-chip>
+                </div>
+                <div class="mat-chip-custom-block">
+                    <p class="mat-chip-custom-title">Returns for:</p>
+                    <mat-chip disabled>Four fish</mat-chip>
+                </div>
+            </mat-chip-set>
+        </mat-card-content>
+    </mat-card>
+    <div class="button-density-5">
+        <button mat-flat-button>Basic</button>
+    </div>
+</div>

@@ -1,0 +1,78 @@
+@use '@angular/material' as mat;
+/* **************************** Grid for controls ********************************* */
+/* Calculate grid-item height due to row count. */
+$container-md-size: 1430px;
+$i: 6;
+@while $i > 0 {
+  .grid-row-#{$i} { grid-row: span $i; }
+  $i: $i - 1;
+}
+/* Calculate grid-item width due to column count. */
+$j: 12;
+@media (max-width: $container-md-size) {
+  @while $j > 0 {
+    .grid-md-col-#{$j} {
+      grid-column: span #{$j};
+    }
+    $j: $j - 1;
+  }
+}
+@media (min-width: $container-md-size) {
+  @while $j > 0 {
+    .grid-xl-col-#{$j} {
+      grid-column: span #{$j};
+    }
+    $j: $j - 1;
+  }
+}
+
+/* Settings for grid container with known count of columns. */
+$grid-column-width: 70px;
+$grid-row-height: 60px;
+@mixin make-wrapper($wrapper-width, $wrapper-max-width) {
+    width: $wrapper-width;
+    max-width: $wrapper-max-width;
+}
+@mixin make-block-center() {
+    $margin-auto: auto;
+    margin-right: $margin-auto;
+    margin-left: $margin-auto;
+}
+
+.controls-grid {
+  @include make-wrapper(98%, 1400px);
+  /* @extend .block-center; */
+  @include make-block-center();
+  position: relative;
+  z-index: 1;
+  display: grid;
+  //grid-template-columns: repeat(12, minmax($grid-column-width, 1fr));
+  grid-template-columns: repeat(14, minmax($grid-column-width, 1fr));
+  grid-template-rows: $grid-row-height;
+  /* This will ON constant height for controls:
+  grid-auto-rows: $grid-row-height;
+  This will OFF constant height for controls: */
+  grid-auto-rows: minmax(min-content, max-content);
+  grid-gap: 7px;
+}
+.controls-flex {
+    display: flex !important;
+    align-items: center;
+    p {
+      display: flex;
+      align-items: center;
+      margin-top: 3px;
+      margin-bottom: 0;
+      margin-right: 1ex;
+      height: 100%;
+    }
+}
+
+
+.mat-button-toggle-group-custom-density {
+    @include mat.button-toggle-density(-5);
+}
+
+// .mat-slide-toggle-custom-density {
+//     @include mat.slide-toggle-density(-5);
+//   }

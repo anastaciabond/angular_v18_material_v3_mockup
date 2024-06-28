@@ -2,10 +2,17 @@
 
 $theme: mat.define-theme((
   color: (
-    theme-type: light,
-    primary: mat.$azure-palette,
-    tertiary: mat.$blue-palette,
-  )
+    theme-type: dark,
+    primary: mat.$orange-palette,
+    tertiary: mat.$violet-palette,
+  ),
+  typography: (
+    brand-family: 'Roboto',
+    bold-weight: 900,
+  ),
+  density: (
+    //scale: -3
+  ),
 ));
 
 body {
@@ -21,4 +28,16 @@ html {
 }
 
 @include mat.core();
-@include mat.color-variants-backwards-compatibility($theme);
+// Founded that backwards-cmpatibility allows to use tertiary color from theme in some components (for ex. slide-toggle).
+//@include mat.color-variants-backwards-compatibility($theme);
+
+// Button density ready-to-go classes. Include this class in the block, which wrape button.
+.button-density-3 {
+  @include mat.button-density(-3);
+}
+.button-density-4 {
+  @include mat.button-density(-4);
+}
+.button-density-5 {
+  @include mat.button-density(-5);
+}
