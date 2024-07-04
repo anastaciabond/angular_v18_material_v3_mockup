@@ -1,9 +1,9 @@
 @use '@angular/material' as mat;
 
-$theme: mat.define-theme((
+$angular_v18_material_v3-theme: mat.define-theme((
   color: (
     theme-type: dark,
-    primary: mat.$orange-palette,
+    primary: mat.$green-palette,
     tertiary: mat.$violet-palette,
   ),
   typography: (
@@ -15,21 +15,40 @@ $theme: mat.define-theme((
   ),
 ));
 
+/*
+Explanation of mat.get-theme-color method. There are two ways to use it (https://material.angular.io/guide/theming-your-components):
+  - with three arguments to read tonal palette color based on principes of Material (https://m3.material.io/styles/color/system/how-the-system-works#3ce9da92-a118-4692-8b2c-c5c52a413fa6): mat.all-component-themes($theme, $palette, $hue),
+    for ex. mat.all-component-themes($angular_v18_material_v3-theme, primary, 10);
+    It creates static color, which is not affected by light/dark theme changing.
+  - with two arguments to read a color role from predefined by Material (https://m3.material.io/styles/color/roles): mat.get-theme-color($theme, $role),
+    for ex. mat.get-theme-color($angular_v18_material_v3-theme, on-primary-container).
+    It gets the color, defined by light/dark theme and reacts on its change.
+*/
+
+@include mat.core();
+// Founded that backwards-cmpatibility allows to use tertiary color from theme in some components (for ex. slide-toggle).
+//@include mat.color-variants-backwards-compatibility($angular_v18_material_v3-theme);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+:root {
+  @include mat.all-component-themes($angular_v18_material_v3-theme);
+}
+
+//***************************************************************************************************************
+
+html, body { height: 100%; }
 body {
-  @include mat.all-component-themes($theme);
   font-family: Roboto, "Helvetica Neue", sans-serif;
   margin: 0;
   padding: 30px;
   height: 100%;
 }
-
-html {
-  height: 100%;
+.mat-app-background {
+  background-color: mat.get-theme-color($angular_v18_material_v3-theme, on-primary);
 }
-
-@include mat.core();
-// Founded that backwards-cmpatibility allows to use tertiary color from theme in some components (for ex. slide-toggle).
-//@include mat.color-variants-backwards-compatibility($theme);
+//***************************************************************************************************************
 
 // Button density ready-to-go classes. Include this class in the block, which wrape button.
 .button-density-3 {
