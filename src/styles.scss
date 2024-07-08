@@ -1,6 +1,9 @@
-@use '@angular/material' as mat;
+@use "@angular/material" as mat;
+@use "assets/common/helped-classes";
+@use "assets/common/css/mat-chip-custom-title/mat-chip-custom-title.scss" as chip-custom-title;
 
-$angular_v18_material_v3-theme: mat.define-theme((
+// Apply theme for the app. ************************************************************************************
+$app-dark-theme: mat.define-theme((
   color: (
     theme-type: dark,
     primary: mat.$green-palette,
@@ -11,17 +14,34 @@ $angular_v18_material_v3-theme: mat.define-theme((
     bold-weight: 900,
   ),
   density: (
-    //scale: -3
+    scale: -3
+  ),
+));
+$app-light-theme: mat.define-theme((
+  color: (
+    theme-type: light,
+    primary: mat.$violet-palette,
+    tertiary: mat.$rose-palette,
+  ),
+  typography: (
+    brand-family: 'Roboto',
+    bold-weight: 900,
+  ),
+  density: (
+    scale: -3
   ),
 ));
 
+$current-app-theme: $app-dark-theme;
+
 /*
 Explanation of mat.get-theme-color method. There are two ways to use it (https://material.angular.io/guide/theming-your-components):
-  - with three arguments to read tonal palette color based on principes of Material (https://m3.material.io/styles/color/system/how-the-system-works#3ce9da92-a118-4692-8b2c-c5c52a413fa6): mat.all-component-themes($theme, $palette, $hue),
-    for ex. mat.all-component-themes($angular_v18_material_v3-theme, primary, 10);
+  - with three arguments to read tonal palette color based on principes of Material 
+    (https://m3.material.io/styles/color/system/how-the-system-works#3ce9da92-a118-4692-8b2c-c5c52a413fa6): 
+    mat.all-component-themes($theme, $palette, $hue), for ex. mat.all-component-themes($angular_v18_material_v3-theme, primary, 10);
     It creates static color, which is not affected by light/dark theme changing.
-  - with two arguments to read a color role from predefined by Material (https://m3.material.io/styles/color/roles): mat.get-theme-color($theme, $role),
-    for ex. mat.get-theme-color($angular_v18_material_v3-theme, on-primary-container).
+  - with two arguments to read a color role from predefined by Material (https://m3.material.io/styles/color/roles): 
+    mat.get-theme-color($theme, $role), for ex. mat.get-theme-color($angular_v18_material_v3-theme, on-primary-container).
     It gets the color, defined by light/dark theme and reacts on its change.
 */
 
@@ -32,25 +52,55 @@ Explanation of mat.get-theme-color method. There are two ways to use it (https:/
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
-:root {
-  @include mat.all-component-themes($angular_v18_material_v3-theme);
+html {
+  @include mat.all-component-themes($current-app-theme);
+  @include chip-custom-title.theme($current-app-theme);
 }
 
-//***************************************************************************************************************
-
-html, body { height: 100%; }
+// Reboot styles. ***********************************************************************************************
+html, body { 
+  min-width: 100%;
+  width: 100%;
+  min-height: 100%;
+  height: 100%;
+}
 body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
   margin: 0;
   padding: 30px;
   height: 100%;
 }
-.mat-app-background {
-  background-color: mat.get-theme-color($angular_v18_material_v3-theme, on-primary);
+/* Change from `box-sizing: content-box` so that `width` is not affected by `padding` or `border`. */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
-//***************************************************************************************************************
+hr {
+  margin: 1rem 0;
+  color: inherit; // 1
+  background-color: currentColor;
+  border: 0;
+  opacity: 0.25;
+}
 
-// Button density ready-to-go classes. Include this class in the block, which wrape button.
+hr:not([size]) {
+  height: 1px; // 2
+}
+/* Reset margins on paragraphs.
+Similarly, the top margin on `<p>`s get reset. However, we also reset the
+bottom margin to use `rem` units instead of `em`. */
+p /*, h1, h2, h3, h4, h5, h6*/ {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+// Set background for app. **************************************************************************************
+.mat-app-background {
+  background-color: mat.get-theme-color($current-app-theme, on-primary);
+}
+
+// Button density ready-to-go classes. Include this class in the block, which wrape button. *********************
 .button-density-3 {
   @include mat.button-density(-3);
 }
@@ -60,3 +110,5 @@ body {
 .button-density-5 {
   @include mat.button-density(-5);
 }
+
+// **************************************************************************************************************

@@ -1,0 +1,32 @@
+@use "sass:map";
+@use "@angular/material" as mat;
+
+
+@mixin mat-chip-custom-title-theme($theme) {
+    // .mat-chip-custom-title {
+    // }
+}
+
+@mixin color($theme) {
+    .mat-chip-custom-title {
+        color: mat.get-theme-color($theme, primary, 60);
+    }
+}
+
+@mixin typography($theme) {
+    .mat-chip-custom-title {
+        font: mat.get-theme-typography($theme, body-small);
+    }
+}
+
+@mixin theme($theme) {
+    @if mat.theme-has($theme, color) {
+      @include color($theme);
+    }
+  
+    @if mat.theme-has($theme, typography) {
+      @include typography($theme);
+    }
+
+    @include mat-chip-custom-title-theme($theme);
+}

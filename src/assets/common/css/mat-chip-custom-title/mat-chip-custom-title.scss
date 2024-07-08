@@ -1,0 +1,7 @@
+@import "mat-chip-custom-title-theme";
+
+// The value was taken from Material 3 theme: .mdc-evolution-chip "margin-left: 8px;".
+$custom-padding-left: 8px;
+.mat-chip-custom-title {    
+    padding-left: 8px;
+}
