@@ -1,6 +1,12 @@
 @use "@angular/material" as mat;
 @use "assets/common/helped-classes";
 @use "assets/common/css/mat-chip-custom-title/mat-chip-custom-title.scss" as chip-custom-title;
+@use "assets/common/css/mat-select-custom/mat-select-custom.scss" as mat-select-custom;
+
+:root {
+  //--mdc-switch-track-shape: 9999px; // basic
+  //--mdc-switch-track-shape: 0; // new value
+}
 
 // Apply theme for the app. ************************************************************************************
 $app-dark-theme: mat.define-theme((
@@ -14,7 +20,7 @@ $app-dark-theme: mat.define-theme((
     bold-weight: 900,
   ),
   density: (
-    scale: -3
+    scale: -5
   ),
 ));
 $app-light-theme: mat.define-theme((
@@ -28,7 +34,7 @@ $app-light-theme: mat.define-theme((
     bold-weight: 900,
   ),
   density: (
-    scale: -3
+    scale: -5
   ),
 ));
 
@@ -47,7 +53,7 @@ Explanation of mat.get-theme-color method. There are two ways to use it (https:/
 
 @include mat.core();
 // Founded that backwards-cmpatibility allows to use tertiary color from theme in some components (for ex. slide-toggle).
-//@include mat.color-variants-backwards-compatibility($angular_v18_material_v3-theme);
+@include mat.color-variants-backwards-compatibility($current-app-theme);
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
@@ -55,7 +61,18 @@ Explanation of mat.get-theme-color method. There are two ways to use it (https:/
 html {
   @include mat.all-component-themes($current-app-theme);
   @include chip-custom-title.theme($current-app-theme);
+  @include mat-select-custom.theme($current-app-theme);
 }
+
+// Apply theme through adding CSS class to <body> tag to change it dynamically from theme service. *Will be realized later.
+// html {
+//   &.theme-light {
+//     @include mat.core-theme($app-light-theme);
+//   }
+//   &.theme-dark {
+//     @include mat.core-theme($app-dark-theme);
+//   }
+// }
 
 // Reboot styles. ***********************************************************************************************
 html, body { 
@@ -112,3 +129,10 @@ p /*, h1, h2, h3, h4, h5, h6*/ {
 }
 
 // **************************************************************************************************************
+
+app-second {
+  mat-slide-toggle {
+    transform: scale(0.85);
+    translate: -5px;
+  }
+}

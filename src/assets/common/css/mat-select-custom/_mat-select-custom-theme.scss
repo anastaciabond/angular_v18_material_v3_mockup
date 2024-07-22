@@ -1,0 +1,44 @@
+@use "sass:map";
+@use "@angular/material" as mat;
+@use "../../../../../node_modules/@angular/material/core/tokens/token-utils";
+@use "../../../../../node_modules/@angular/material/core/theming/inspection";
+@use "../../../../../node_modules/@angular/material/core/style/sass-utils";
+
+
+@mixin mat-select-custom($theme) {
+    // .mat-select-custom {
+    // }
+}
+
+@mixin color($theme) {
+    .mdc-text-field--filled:not(.mdc-text-field--disabled) {
+        // background-color: var(--mdc-filled-text-field-container-color);
+        background-color: mat.get-theme-color($theme, primary, 60);
+    }
+}
+
+@mixin typography($theme) {
+}
+
+@mixin density($theme) {
+    .mat-select-custom {
+        @include mat.select-density(-5);
+        @include mat.form-field-density(-5);
+    }
+}
+
+@mixin theme($theme) {
+    @if mat.theme-has($theme, color) {
+      @include color($theme);
+    }
+  
+    @if mat.theme-has($theme, typography) {
+      @include typography($theme);
+    }
+
+    @if mat.theme-has($theme, density) {
+        @include density($theme);
+      }
+
+    @include mat-select-custom($theme);
+}

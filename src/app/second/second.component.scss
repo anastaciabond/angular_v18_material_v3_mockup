@@ -1,4 +1,16 @@
 @use '@angular/material' as mat;
+// :host {
+  // Apply new custom design values for mat-slide-toggle.
+  // --mdc-switch-track-shape: 10px;
+  // --mdc-switch-track-width: 42px;
+  // --mdc-switch-track-height: 26px;
+  // --mat-switch-with-icon-handle-size: 20px;
+  // --mat-switch-unselected-with-icon-handle-horizontal-margin: 0 3px;
+  // --mat-switch-selected-with-icon-handle-horizontal-margin: 0 20px
+  // --mat-switch-label-text-line-height: 0.8rem;
+  // --mat-switch-label-text-size: 0.875rem;
+// }
+
 /* **************************** Grid for controls ********************************* */
 /* Calculate grid-item height due to row count. */
 $container-md-size: 1430px;
@@ -72,7 +84,3 @@ $grid-row-height: 60px;
 .mat-button-toggle-group-custom-density {
     @include mat.button-toggle-density(-5);
 }
-
-// .mat-slide-toggle-custom-density {
-//     @include mat.slide-toggle-density(-5);
-//   }
