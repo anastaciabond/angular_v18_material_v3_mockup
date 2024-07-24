@@ -7,6 +7,10 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 
 import {FormsModule} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
+import { FirstFirstComponent } from "../first-first/first-first.component";
+
+import { ViewEncapsulation } from '@angular/core';
+
 
 @Component({
   selector: 'app-first',
@@ -18,9 +22,11 @@ import {MatInputModule} from '@angular/material/input';
     MatSelectModule,
     MatInputModule,
     FormsModule,
-  ],
+    FirstFirstComponent
+],
   templateUrl: './first.component.html',
-  styleUrl: './first.component.scss'
+  styleUrl: './first.component.scss',
+  //encapsulation: ViewEncapsulation.ShadowDom,
 })
 export class FirstComponent {
 }

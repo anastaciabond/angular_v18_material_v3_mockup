@@ -21,10 +21,10 @@
 }
 
 @mixin density($theme) {
-    .mat-select-custom {
-        @include mat.select-density(-5);
-        @include mat.form-field-density(-5);
-    }
+    // .mat-select-custom {
+    //     @include mat.select-density(-5);
+    //     @include mat.form-field-density(-5);
+    // }
 }
 
 @mixin theme($theme) {

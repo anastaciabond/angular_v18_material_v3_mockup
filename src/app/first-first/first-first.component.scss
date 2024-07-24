@@ -1,0 +1,10 @@
+@import "https://fonts.googleapis.com/icon?family=Material+Icons";
+:host {
+    display: block;
+    background-color: silver;
+    --mat-icon-color: #ffee00;
+}
+
+.button-shadow-dom-styles {
+    background-color: rgba(0, 255, 255, 0.514);
+}

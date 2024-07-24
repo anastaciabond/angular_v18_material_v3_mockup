@@ -6,14 +6,16 @@
 :root {
   //--mdc-switch-track-shape: 9999px; // basic
   //--mdc-switch-track-shape: 0; // new value
+  //--mat-form-field-filled-label-display: block;
+  --mdc-extended-fab-label-text-size: 1rem;
 }
 
 // Apply theme for the app. ************************************************************************************
 $app-dark-theme: mat.define-theme((
   color: (
     theme-type: dark,
-    primary: mat.$green-palette,
-    tertiary: mat.$violet-palette,
+    primary: mat.$rose-palette,
+    tertiary: mat.$green-palette,
   ),
   typography: (
     brand-family: 'Roboto',
@@ -26,8 +28,8 @@ $app-dark-theme: mat.define-theme((
 $app-light-theme: mat.define-theme((
   color: (
     theme-type: light,
-    primary: mat.$violet-palette,
-    tertiary: mat.$rose-palette,
+    primary: mat.$azure-palette,
+    tertiary: mat.$orange-palette,
   ),
   typography: (
     brand-family: 'Roboto',
@@ -37,8 +39,6 @@ $app-light-theme: mat.define-theme((
     scale: -5
   ),
 ));
-
-$current-app-theme: $app-dark-theme;
 
 /*
 Explanation of mat.get-theme-color method. There are two ways to use it (https://material.angular.io/guide/theming-your-components):
@@ -52,17 +52,30 @@ Explanation of mat.get-theme-color method. There are two ways to use it (https:/
 */
 
 @include mat.core();
-// Founded that backwards-cmpatibility allows to use tertiary color from theme in some components (for ex. slide-toggle).
-@include mat.color-variants-backwards-compatibility($current-app-theme);
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
-html {
-  @include mat.all-component-themes($current-app-theme);
-  @include chip-custom-title.theme($current-app-theme);
-  @include mat-select-custom.theme($current-app-theme);
+@media (prefers-color-scheme: light) {
+  // Founded that backwards-cmpatibility allows to use tertiary color from theme in some components (for ex. slide-toggle).
+  @include mat.color-variants-backwards-compatibility($app-light-theme);
+  html {
+    @include mat.all-component-themes($app-light-theme);
+    @include chip-custom-title.theme($app-light-theme);
+    @include mat-select-custom.theme($app-light-theme);
+  }
 }
+
+@media (prefers-color-scheme: dark) {
+  // Founded that backwards-cmpatibility allows to use tertiary color from theme in some components (for ex. slide-toggle).
+  @include mat.color-variants-backwards-compatibility($app-dark-theme);
+  html {
+    @include mat.all-component-themes($app-dark-theme);
+    @include chip-custom-title.theme($app-dark-theme);
+    @include mat-select-custom.theme($app-dark-theme);
+  }
+}
+
 
 // Apply theme through adding CSS class to <body> tag to change it dynamically from theme service. *Will be realized later.
 // html {
@@ -113,8 +126,17 @@ p /*, h1, h2, h3, h4, h5, h6*/ {
 }
 
 // Set background for app. **************************************************************************************
-.mat-app-background {
-  background-color: mat.get-theme-color($current-app-theme, on-primary);
+@media (prefers-color-scheme: light) {
+  .mat-app-background {
+    //background-color: mat.get-theme-color($app-light-theme, on-primary);
+    background-color: rgb(241, 245, 222);
+  }
+}
+@media (prefers-color-scheme: dark) {
+  .mat-app-background {
+    //background-color: mat.get-theme-color($app-dark-theme, on-primary);
+    background-color: rgb(66, 24, 7);
+  }
 }
 
 // Button density ready-to-go classes. Include this class in the block, which wrape button. *********************
@@ -130,9 +152,20 @@ p /*, h1, h2, h3, h4, h5, h6*/ {
 
 // **************************************************************************************************************
 
+// app-second {
+//   .mdc-text-field--filled .mat-mdc-floating-label {
+//     display: block;
+//   }
+// }
+
+// Apply new custom design values for mat-slide-toggle in app-second component.
 app-second {
   mat-slide-toggle {
     transform: scale(0.85);
     translate: -5px;
   }
+}
+
+app-first-first .button-shadow-dom-styles {
+  background-color: rgb(57, 146, 146);
 }

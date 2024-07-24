@@ -1,11 +1,6 @@
-.example-panel-red.mat-mdc-select-panel {
-    background: rgba(255, 0, 0, 0.5);
-  }
-  
-  .example-panel-green.mat-mdc-select-panel {
-    background: rgba(0, 255, 0, 0.5);
-  }
-  
-  .example-panel-blue.mat-mdc-select-panel {
-    background: rgba(0, 0, 255, 0.5);
-  }
+:host {
+//   //--mdc-filled-text-field-label-text-color: #bdf86b;
+//   //--mat-form-field-filled-label-display: block;
+    --mat-icon-color: #cc00ff;
+}
+
