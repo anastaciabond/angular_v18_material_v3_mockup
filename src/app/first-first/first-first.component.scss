@@ -1,3 +1,4 @@
+@use '@angular/material' as mat;
 @import "https://fonts.googleapis.com/icon?family=Material+Icons";
 :host {
     display: block;
@@ -5,6 +6,15 @@
     --mat-icon-color: #ffee00;
 }
 
-.button-shadow-dom-styles {
-    background-color: rgba(0, 255, 255, 0.514);
+@mixin color($theme) {
+  .button-shadow-dom-styles {
+      //background-color: rgba(0, 255, 255, 0.514);
+      background-color: mat.get-theme-color($theme, primary, 60);
+  }
+}
+
+@mixin theme($theme) {
+  @if mat.theme-has($theme, color) {
+    @include color($theme);
+  }
 }

@@ -1,14 +1,14 @@
 @use "@angular/material" as mat;
-@use "assets/common/helped-classes";
-@use "assets/common/css/mat-chip-custom-title/mat-chip-custom-title.scss" as chip-custom-title;
-@use "assets/common/css/mat-select-custom/mat-select-custom.scss" as mat-select-custom;
+// @use "assets/common/helped-classes";
+// @use "assets/common/css/mat-chip-custom-title/mat-chip-custom-title.scss" as chip-custom-title;
+// @use "assets/common/css/mat-select-custom/mat-select-custom.scss" as mat-select-custom;
 
-:root {
-  //--mdc-switch-track-shape: 9999px; // basic
-  //--mdc-switch-track-shape: 0; // new value
-  //--mat-form-field-filled-label-display: block;
-  --mdc-extended-fab-label-text-size: 1rem;
-}
+// :root {
+//   //--mdc-switch-track-shape: 9999px; // basic
+//   //--mdc-switch-track-shape: 0; // new value
+//   //--mat-form-field-filled-label-display: block;
+//   --mdc-extended-fab-label-text-size: 1rem;
+// }
 
 // Apply theme for the app. ************************************************************************************
 $app-dark-theme: mat.define-theme((
@@ -30,6 +30,8 @@ $app-light-theme: mat.define-theme((
     theme-type: light,
     primary: mat.$azure-palette,
     tertiary: mat.$orange-palette,
+    use-system-variables: true,
+    system-variables-prefix: cl,
   ),
   typography: (
     brand-family: 'Roboto',
@@ -53,27 +55,38 @@ Explanation of mat.get-theme-color method. There are two ways to use it (https:/
 
 @include mat.core();
 
-// Include theme styles for core and each component used in your app.
+// Include DEFAULT THEME styles for core and each component used in your app.
+// :root {
+//   @include mat.all-component-themes($app-light-theme);
+// }
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
-@media (prefers-color-scheme: light) {
-  // Founded that backwards-cmpatibility allows to use tertiary color from theme in some components (for ex. slide-toggle).
-  @include mat.color-variants-backwards-compatibility($app-light-theme);
-  html {
+:root {
+  @media (prefers-color-scheme: light) {
+    // Founded that backwards-compatibility allows to use tertiary color from theme in some components (for ex. slide-toggle).
+    @include mat.color-variants-backwards-compatibility($app-light-theme); // ??? Do we need it?
     @include mat.all-component-themes($app-light-theme);
-    @include chip-custom-title.theme($app-light-theme);
-    @include mat-select-custom.theme($app-light-theme);
+    // @include mat.all-component-colors($app-light-theme);
+    // @include mat.all-component-typographies($app-light-theme);
+    // @include chip-custom-title.theme($app-light-theme);
+    // @include mat-select-custom.theme($app-light-theme);
+    --mdc-filled-button-container-color: black;
   }
+  --cl-filled-button-container-color: red;
 }
 
-@media (prefers-color-scheme: dark) {
-  // Founded that backwards-cmpatibility allows to use tertiary color from theme in some components (for ex. slide-toggle).
-  @include mat.color-variants-backwards-compatibility($app-dark-theme);
-  html {
-    @include mat.all-component-themes($app-dark-theme);
-    @include chip-custom-title.theme($app-dark-theme);
-    @include mat-select-custom.theme($app-dark-theme);
-  }
+
+
+:root {
+  // @media (prefers-color-scheme: dark) {
+  //   // Founded that backwards-compatibility allows to use tertiary color from theme in some components (for ex. slide-toggle).
+  //   @include mat.color-variants-backwards-compatibility($app-dark-theme); // ??? Do we need it?
+  //   @include mat.all-component-themes($app-dark-theme);
+  //   // @include mat.all-component-colors($app-dark-theme);
+  //   // @include mat.all-component-typographies($app-dark-theme);
+  //   @include chip-custom-title.theme($app-dark-theme);
+  //   @include mat-select-custom.theme($app-dark-theme);
+  // }
 }
 
 
@@ -140,23 +153,17 @@ p /*, h1, h2, h3, h4, h5, h6*/ {
 }
 
 // Button density ready-to-go classes. Include this class in the block, which wrape button. *********************
-.button-density-3 {
-  @include mat.button-density(-3);
-}
-.button-density-4 {
-  @include mat.button-density(-4);
-}
-.button-density-5 {
-  @include mat.button-density(-5);
-}
+// .button-density-3 {
+//   @include mat.button-density(-3);
+// }
+// .button-density-4 {
+//   @include mat.button-density(-4);
+// }
+// .button-density-5 {
+//   @include mat.button-density(-5);
+// }
 
 // **************************************************************************************************************
-
-// app-second {
-//   .mdc-text-field--filled .mat-mdc-floating-label {
-//     display: block;
-//   }
-// }
 
 // Apply new custom design values for mat-slide-toggle in app-second component.
 app-second {
