@@ -1,0 +1,129 @@
+@use 'sass:color';
+@use 'sass:map';
+@use 'sass:math';
+
+@function _estimate-hue($hues, $hue, $prev-hue, $next-hue) {
+  $weight: math.div($next-hue - $hue, $next-hue - $prev-hue) * 100%;
+  @return color.mix(map.get($hues, $prev-hue), map.get($hues, $next-hue), $weight);
+}
+
+@function _patch-missing-hues($palette) {
+  $neutral: map.get($palette, neutral);
+  $palette: map.set($palette, neutral, 4, _estimate-hue($neutral, 4, 0, 10));
+  $palette: map.set($palette, neutral, 6, _estimate-hue($neutral, 6, 0, 10));
+  $palette: map.set($palette, neutral, 12, _estimate-hue($neutral, 12, 10, 20));
+  $palette: map.set($palette, neutral, 17, _estimate-hue($neutral, 17, 10, 20));
+  $palette: map.set($palette, neutral, 22, _estimate-hue($neutral, 22, 20, 25));
+  $palette: map.set($palette, neutral, 24, _estimate-hue($neutral, 24, 20, 25));
+  $palette: map.set($palette, neutral, 87, _estimate-hue($neutral, 87, 80, 90));
+  $palette: map.set($palette, neutral, 92, _estimate-hue($neutral, 92, 90, 95));
+  $palette: map.set($palette, neutral, 94, _estimate-hue($neutral, 94, 90, 95));
+  $palette: map.set($palette, neutral, 96, _estimate-hue($neutral, 96, 95, 98));
+  @return $palette;
+}
+
+/// Adds the error colors to the given palette.
+@function _patch-error-palette($palette) {
+  @return map.merge(
+      $palette,
+      (
+        error: (
+          0: #000000,
+          10: #410002,
+          20: #690005,
+          25: #7e0007,
+          30: #93000a,
+          35: #a80710,
+          40: #ba1a1a,
+          50: #de3730,
+          60: #ff5449,
+          70: #ff897d,
+          80: #ffb4ab,
+          90: #ffdad6,
+          95: #ffedea,
+          98: #fff8f7,
+          99: #fffbff,
+          100: #ffffff,
+        ),
+      )
+  );
+}
+
+@function _apply-patches($palette) {
+  @return _patch-missing-hues(_patch-error-palette($palette));
+}
+
+$lime-palette: _apply-patches((
+  0: #000000,
+  10: #161F00,
+  20: #283500,
+  25: #324100,
+  30: #3B4D00,
+  35: #465900,
+  40: #506600,
+  50: #658100,
+  60: #7C9C00,
+  70: #93B900,
+  80: #AAD600,
+  90: #D5EC92,
+  95: #E3FB9F,
+  98: #F3FFCB,
+  99: #FBFFE2,
+  100: #ffffff,
+  secondary: (
+    0: #000000,
+    10: #2b151b,
+    20: #161F00,
+    25: #353F17,
+    30: #404B21,
+    35: #4C572C,
+    40: #586337,
+    50: #707C4D,
+    60: #8A9665,
+    70: #A4B17D,
+    80: #BFCC97,
+    90: #DBE9B1,
+    95: #EAF7BE,
+    98: #F3FFCB,
+    99: #FBFFE2,
+    100: #ffffff,
+  ),
+  neutral: (
+    0: #000000,
+    10: #201a1b,
+    20: #352f30,
+    25: #413a3b,
+    30: #4c4546,
+    35: #585052,
+    40: #655c5e,
+    50: #787771,
+    60: #91918A,
+    70: #ACABA4,
+    80: #C8C7BF,
+    90: #E4E3DB,
+    95: #F3F1E9,
+    98: #FBF9F1,
+    99: #FEFCF4,
+    100: #ffffff,
+  ),
+  neutral-variant: (
+    0: #000000,
+    10: #24191b,
+    20: #3A3D31,
+    25: #45383b,
+    30: #46483C,
+    35: #515447,
+    40: #5D6053,
+    50: #76786B,
+    60: #909284,
+    70: #ABAC9D,
+    80: #C6C8B8,
+    90: #E3E4D3,
+    95: #F1F2E1,
+    98: #FAFBEA,
+    99: #FDFDED,
+    100: #ffffff,
+  ),
+));
+
+$mat-app-background: map-get($map: $lime-palette, $key: 30);

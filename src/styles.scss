@@ -1,4 +1,8 @@
 @use "@angular/material" as mat;
+@use "assets/common/css/palette-lime" as palette-lime;
+
+@import "https://fonts.googleapis.com/icon?family=Material+Icons";
+
 // @use "assets/common/helped-classes";
 // @use "assets/common/css/mat-chip-custom-title/mat-chip-custom-title.scss" as chip-custom-title;
 // @use "assets/common/css/mat-select-custom/mat-select-custom.scss" as mat-select-custom;
@@ -14,7 +18,7 @@
 $app-dark-theme: mat.define-theme((
   color: (
     theme-type: dark,
-    primary: mat.$rose-palette,
+    primary: palette-lime.$lime-palette,
     tertiary: mat.$green-palette,
   ),
   typography: (
@@ -28,10 +32,10 @@ $app-dark-theme: mat.define-theme((
 $app-light-theme: mat.define-theme((
   color: (
     theme-type: light,
-    primary: mat.$azure-palette,
+    primary: palette-lime.$lime-palette,
     tertiary: mat.$orange-palette,
-    use-system-variables: true,
-    system-variables-prefix: cl,
+    // use-system-variables: true,
+    // system-variables-prefix: cl,
   ),
   typography: (
     brand-family: 'Roboto',
@@ -62,31 +66,34 @@ Explanation of mat.get-theme-color method. There are two ways to use it (https:/
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
 :root {
+  //--cl-primary: red;
   @media (prefers-color-scheme: light) {
     // Founded that backwards-compatibility allows to use tertiary color from theme in some components (for ex. slide-toggle).
-    @include mat.color-variants-backwards-compatibility($app-light-theme); // ??? Do we need it?
+    //@include mat.color-variants-backwards-compatibility($app-light-theme); // ??? Do we need it?
     @include mat.all-component-themes($app-light-theme);
     // @include mat.all-component-colors($app-light-theme);
     // @include mat.all-component-typographies($app-light-theme);
     // @include chip-custom-title.theme($app-light-theme);
     // @include mat-select-custom.theme($app-light-theme);
-    --mdc-filled-button-container-color: black;
+    // --mdc-filled-button-container-color: black;
   }
-  --cl-filled-button-container-color: red;
+  // app-second button {
+  //   --mdc-filled-button-container-color: green;
+  // }
 }
 
 
 
 :root {
-  // @media (prefers-color-scheme: dark) {
-  //   // Founded that backwards-compatibility allows to use tertiary color from theme in some components (for ex. slide-toggle).
-  //   @include mat.color-variants-backwards-compatibility($app-dark-theme); // ??? Do we need it?
-  //   @include mat.all-component-themes($app-dark-theme);
-  //   // @include mat.all-component-colors($app-dark-theme);
-  //   // @include mat.all-component-typographies($app-dark-theme);
-  //   @include chip-custom-title.theme($app-dark-theme);
-  //   @include mat-select-custom.theme($app-dark-theme);
-  // }
+  @media (prefers-color-scheme: dark) {
+    // Founded that backwards-compatibility allows to use tertiary color from theme in some components (for ex. slide-toggle).
+    @include mat.color-variants-backwards-compatibility($app-dark-theme); // ??? Do we need it?
+    @include mat.all-component-themes($app-dark-theme);
+    // @include mat.all-component-colors($app-dark-theme);
+    // @include mat.all-component-typographies($app-dark-theme);
+    @include chip-custom-title.theme($app-dark-theme);
+    @include mat-select-custom.theme($app-dark-theme);
+  }
 }
 
 
@@ -142,13 +149,15 @@ p /*, h1, h2, h3, h4, h5, h6*/ {
 @media (prefers-color-scheme: light) {
   .mat-app-background {
     //background-color: mat.get-theme-color($app-light-theme, on-primary);
-    background-color: rgb(241, 245, 222);
+    //background-color: rgb(241, 245, 222);
+    background-color: palette-lime.$mat-app-background;
   }
 }
 @media (prefers-color-scheme: dark) {
   .mat-app-background {
     //background-color: mat.get-theme-color($app-dark-theme, on-primary);
-    background-color: rgb(66, 24, 7);
+    // background-color: rgb(66, 24, 7);
+    background-color: palette-lime.$mat-app-background;
   }
 }
 
@@ -173,6 +182,6 @@ app-second {
   }
 }
 
-app-first-first .button-shadow-dom-styles {
-  background-color: rgb(57, 146, 146);
-}
+// app-first-first .button-shadow-dom-styles {
+//   background-color: rgb(57, 146, 146);
+// }

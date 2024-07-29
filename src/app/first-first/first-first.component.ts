@@ -14,7 +14,7 @@ import { ViewEncapsulation } from '@angular/core';
   imports: [MatFormFieldModule, MatSelectModule, FormsModule, ReactiveFormsModule, MatButtonModule, MatDividerModule, MatIconModule],
   templateUrl: './first-first.component.html',
   styleUrl: './first-first.component.scss',
-  //encapsulation: ViewEncapsulation.ShadowDom,
+  encapsulation: ViewEncapsulation.ShadowDom,
 })
 export class FirstFirstComponent {
   toppings = new FormControl('');
