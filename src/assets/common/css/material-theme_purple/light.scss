@@ -1,4 +1,4 @@
-.light {
+@mixin light {
   --md-sys-color-primary: rgb(142 0 74);
   --md-sys-color-surface-tint: rgb(184 6 98);
   --md-sys-color-on-primary: rgb(255 255 255);
@@ -48,4 +48,8 @@
   --md-sys-color-surface-container: rgb(255 232 237);
   --md-sys-color-surface-container-high: rgb(252 226 231);
   --md-sys-color-surface-container-highest: rgb(246 220 226);
+}
+
+:root {
+  @include light;
 }

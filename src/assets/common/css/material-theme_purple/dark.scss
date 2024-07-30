@@ -1,4 +1,4 @@
-.dark {
+@mixin dark {
   --md-sys-color-primary: rgb(255 177 200);
   --md-sys-color-surface-tint: rgb(255 177 200);
   --md-sys-color-on-primary: rgb(101 0 51);
@@ -48,4 +48,10 @@
   --md-sys-color-surface-container: rgb(42 28 32);
   --md-sys-color-surface-container-high: rgb(53 38 42);
   --md-sys-color-surface-container-highest: rgb(65 48 53);
+}
+
+:root {
+  @media (prefers-color-scheme: dark) {
+    @include dark;
+  }
 }

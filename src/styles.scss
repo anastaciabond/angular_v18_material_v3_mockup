@@ -1,11 +1,10 @@
 @use "@angular/material" as mat;
-@use "assets/common/css/palette-lime" as palette-lime;
+@use "assets/common/css/material-theme_purple/light.scss";
+@use "assets/common/css/material-theme_purple/dark.scss";
 
-@import "https://fonts.googleapis.com/icon?family=Material+Icons";
-
-// @use "assets/common/helped-classes";
-// @use "assets/common/css/mat-chip-custom-title/mat-chip-custom-title.scss" as chip-custom-title;
-// @use "assets/common/css/mat-select-custom/mat-select-custom.scss" as mat-select-custom;
+@use "assets/common/helped-classes";
+@use "assets/common/css/mat-chip-custom-title/mat-chip-custom-title.scss" as chip-custom-title;
+@use "assets/common/css/mat-select-custom/mat-select-custom.scss" as mat-select-custom;
 
 // :root {
 //   //--mdc-switch-track-shape: 9999px; // basic
@@ -18,8 +17,10 @@
 $app-dark-theme: mat.define-theme((
   color: (
     theme-type: dark,
-    primary: palette-lime.$lime-palette,
-    tertiary: mat.$green-palette,
+    //primary: mat.$violet-palette,
+    //tertiary: mat.$green-palette,
+    use-system-variables: true,
+    system-variables-prefix: md-sys-color,
   ),
   typography: (
     brand-family: 'Roboto',
@@ -32,10 +33,10 @@ $app-dark-theme: mat.define-theme((
 $app-light-theme: mat.define-theme((
   color: (
     theme-type: light,
-    primary: palette-lime.$lime-palette,
-    tertiary: mat.$orange-palette,
-    // use-system-variables: true,
-    // system-variables-prefix: cl,
+    //primary: mat.$azure-palette,
+    //tertiary: mat.$orange-palette,
+    use-system-variables: true,
+    system-variables-prefix: md-sys-color,
   ),
   typography: (
     brand-family: 'Roboto',
@@ -59,45 +60,44 @@ Explanation of mat.get-theme-color method. There are two ways to use it (https:/
 
 @include mat.core();
 
-// Include DEFAULT THEME styles for core and each component used in your app.
-// :root {
-//   @include mat.all-component-themes($app-light-theme);
-// }
-// Alternatively, you can import and @include the theme mixins for each component
-// that you are using.
+// Defines DEFAULT THEME styles for your app.
 :root {
-  //--cl-primary: red;
-  @media (prefers-color-scheme: light) {
-    // Founded that backwards-compatibility allows to use tertiary color from theme in some components (for ex. slide-toggle).
-    //@include mat.color-variants-backwards-compatibility($app-light-theme); // ??? Do we need it?
-    @include mat.all-component-themes($app-light-theme);
-    // @include mat.all-component-colors($app-light-theme);
-    // @include mat.all-component-typographies($app-light-theme);
-    // @include chip-custom-title.theme($app-light-theme);
-    // @include mat-select-custom.theme($app-light-theme);
-    // --mdc-filled-button-container-color: black;
-  }
-  // app-second button {
-  //   --mdc-filled-button-container-color: green;
-  // }
+  @include mat.all-component-themes($app-light-theme);
+  @include mat.color-variants-backwards-compatibility($app-dark-theme); // ??? Do we need it?
+  // Custom theme mixins.
+  @include chip-custom-title.theme($app-light-theme);
+  @include mat-select-custom.theme($app-light-theme);
 }
 
-
-
+// Defines dark theme if it is default operating system theme.
 :root {
   @media (prefers-color-scheme: dark) {
+    @include mat.all-component-colors($app-dark-theme);
+    @include mat.all-component-typographies($app-dark-theme);
     // Founded that backwards-compatibility allows to use tertiary color from theme in some components (for ex. slide-toggle).
     @include mat.color-variants-backwards-compatibility($app-dark-theme); // ??? Do we need it?
-    @include mat.all-component-themes($app-dark-theme);
-    // @include mat.all-component-colors($app-dark-theme);
-    // @include mat.all-component-typographies($app-dark-theme);
+    // Custom theme mixins.
     @include chip-custom-title.theme($app-dark-theme);
     @include mat-select-custom.theme($app-dark-theme);
   }
 }
 
+// Set background for app. **************************************************************************************
+@media (prefers-color-scheme: light) {
+  .mat-app-background {
+    background-color: mat.get-theme-color($app-light-theme, on-primary);
+    //background-color: rgb(241, 245, 222);
+  }
+}
+@media (prefers-color-scheme: dark) {
+  .mat-app-background {
+    background-color: mat.get-theme-color($app-dark-theme, on-primary);
+    // background-color: rgb(66, 24, 7);
+  }
+}
 
-// Apply theme through adding CSS class to <body> tag to change it dynamically from theme service. *Will be realized later.
+// Will be realized later. *************************************************************************************
+// Apply theme through adding CSS class to <body> tag to change it dynamically from theme service.
 // html {
 //   &.theme-light {
 //     @include mat.core-theme($app-light-theme);
@@ -145,21 +145,6 @@ p /*, h1, h2, h3, h4, h5, h6*/ {
   margin-bottom: 0 !important;
 }
 
-// Set background for app. **************************************************************************************
-@media (prefers-color-scheme: light) {
-  .mat-app-background {
-    //background-color: mat.get-theme-color($app-light-theme, on-primary);
-    //background-color: rgb(241, 245, 222);
-    background-color: palette-lime.$mat-app-background;
-  }
-}
-@media (prefers-color-scheme: dark) {
-  .mat-app-background {
-    //background-color: mat.get-theme-color($app-dark-theme, on-primary);
-    // background-color: rgb(66, 24, 7);
-    background-color: palette-lime.$mat-app-background;
-  }
-}
 
 // Button density ready-to-go classes. Include this class in the block, which wrape button. *********************
 // .button-density-3 {
