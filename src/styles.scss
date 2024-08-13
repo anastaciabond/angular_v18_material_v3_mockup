@@ -1,6 +1,6 @@
 @use "@angular/material" as mat;
-@use "assets/common/css/material-theme_purple/light.scss";
-@use "assets/common/css/material-theme_purple/dark.scss";
+@use "assets/common/css/material-theme_purple/light";
+@use "assets/common/css/material-theme_purple/dark";
 
 @use "assets/common/helped-classes";
 @use "assets/common/css/mat-chip-custom-title/mat-chip-custom-title.scss" as chip-custom-title;
@@ -49,11 +49,11 @@ $app-light-theme: mat.define-theme((
 
 /*
 Explanation of mat.get-theme-color method. There are two ways to use it (https://material.angular.io/guide/theming-your-components):
-  - with three arguments to read tonal palette color based on principes of Material 
-    (https://m3.material.io/styles/color/system/how-the-system-works#3ce9da92-a118-4692-8b2c-c5c52a413fa6): 
+  - with three arguments to read tonal palette color based on principes of Material
+    (https://m3.material.io/styles/color/system/how-the-system-works#3ce9da92-a118-4692-8b2c-c5c52a413fa6):
     mat.all-component-themes($theme, $palette, $hue), for ex. mat.all-component-themes($angular_v18_material_v3-theme, primary, 10);
     It creates static color, which is not affected by light/dark theme changing.
-  - with two arguments to read a color role from predefined by Material (https://m3.material.io/styles/color/roles): 
+  - with two arguments to read a color role from predefined by Material (https://m3.material.io/styles/color/roles):
     mat.get-theme-color($theme, $role), for ex. mat.get-theme-color($angular_v18_material_v3-theme, on-primary-container).
     It gets the color, defined by light/dark theme and reacts on its change.
 */
@@ -63,7 +63,7 @@ Explanation of mat.get-theme-color method. There are two ways to use it (https:/
 // Defines DEFAULT THEME styles for your app.
 :root {
   @include mat.all-component-themes($app-light-theme);
-  @include mat.color-variants-backwards-compatibility($app-dark-theme); // ??? Do we need it?
+  @include mat.color-variants-backwards-compatibility($app-light-theme); // ??? Do we need it?
   // Custom theme mixins.
   @include chip-custom-title.theme($app-light-theme);
   @include mat-select-custom.theme($app-light-theme);
@@ -108,7 +108,7 @@ Explanation of mat.get-theme-color method. There are two ways to use it (https:/
 // }
 
 // Reboot styles. ***********************************************************************************************
-html, body { 
+html, body {
   min-width: 100%;
   width: 100%;
   min-height: 100%;

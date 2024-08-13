@@ -23,7 +23,7 @@
     @if mat.theme-has($theme, color) {
       @include color($theme);
     }
-  
+
     @if mat.theme-has($theme, typography) {
       @include typography($theme);
     }

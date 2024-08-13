@@ -10,6 +10,7 @@ import {MatChipsModule} from '@angular/material/chips';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatSidenavModule} from '@angular/material/sidenav';
 
 @Component({
   selector: 'app-second',
@@ -27,6 +28,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     MatIconModule,
     MatButtonModule,
     MatCheckboxModule,
+    MatSidenavModule,
   ],
   templateUrl: './second.component.html',
   styleUrl: './second.component.scss'
