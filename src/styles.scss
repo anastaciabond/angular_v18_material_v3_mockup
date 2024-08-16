@@ -6,12 +6,6 @@
 @use "assets/common/css/mat-chip-custom-title/mat-chip-custom-title.scss" as chip-custom-title;
 @use "assets/common/css/mat-select-custom/mat-select-custom.scss" as mat-select-custom;
 
-// :root {
-//   //--mdc-switch-track-shape: 9999px; // basic
-//   //--mdc-switch-track-shape: 0; // new value
-//   //--mat-form-field-filled-label-display: block;
-//   --mdc-extended-fab-label-text-size: 1rem;
-// }
 
 // Apply theme for the app. ************************************************************************************
 $app-dark-theme: mat.define-theme((
@@ -27,7 +21,7 @@ $app-dark-theme: mat.define-theme((
     bold-weight: 900,
   ),
   density: (
-    scale: -5
+    scale: 0
   ),
 ));
 $app-light-theme: mat.define-theme((
@@ -43,7 +37,7 @@ $app-light-theme: mat.define-theme((
     bold-weight: 900,
   ),
   density: (
-    scale: -5
+    scale: 0
   ),
 ));
 
@@ -66,7 +60,7 @@ Explanation of mat.get-theme-color method. There are two ways to use it (https:/
   @include mat.color-variants-backwards-compatibility($app-light-theme); // ??? Do we need it?
   // Custom theme mixins.
   @include chip-custom-title.theme($app-light-theme);
-  @include mat-select-custom.theme($app-light-theme);
+  //@include mat-select-custom.theme($app-light-theme);
 }
 
 // Defines dark theme if it is default operating system theme.
@@ -78,21 +72,7 @@ Explanation of mat.get-theme-color method. There are two ways to use it (https:/
     @include mat.color-variants-backwards-compatibility($app-dark-theme); // ??? Do we need it?
     // Custom theme mixins.
     @include chip-custom-title.theme($app-dark-theme);
-    @include mat-select-custom.theme($app-dark-theme);
-  }
-}
-
-// Set background for app. **************************************************************************************
-@media (prefers-color-scheme: light) {
-  .mat-app-background {
-    background-color: mat.get-theme-color($app-light-theme, on-primary);
-    //background-color: rgb(241, 245, 222);
-  }
-}
-@media (prefers-color-scheme: dark) {
-  .mat-app-background {
-    background-color: mat.get-theme-color($app-dark-theme, on-primary);
-    // background-color: rgb(66, 24, 7);
+    //@include mat-select-custom.theme($app-dark-theme);
   }
 }
 
@@ -106,6 +86,15 @@ Explanation of mat.get-theme-color method. There are two ways to use it (https:/
 //     @include mat.core-theme($app-dark-theme);
 //   }
 // }
+
+// Rewrite theme tokens which do not meet custom theme. ********************************************************
+:root {
+  //   //--mdc-switch-track-shape: 9999px; // basic
+  //   //--mdc-switch-track-shape: 0; // new value
+  //   //--mat-form-field-filled-label-display: block;
+  //   --mdc-extended-fab-label-text-size: 1rem;
+    --mdc-filled-text-field-container-color: var(--md-sys-color-primary);
+  }
 
 // Reboot styles. ***********************************************************************************************
 html, body {
@@ -146,7 +135,7 @@ p /*, h1, h2, h3, h4, h5, h6*/ {
 }
 
 
-// Button density ready-to-go classes. Include this class in the block, which wrape button. *********************
+// Button density ready-to-go classes. Include this class in the block, which wraps the button. *********************
 // .button-density-3 {
 //   @include mat.button-density(-3);
 // }
