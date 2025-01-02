@@ -13,24 +13,23 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatSidenavModule} from '@angular/material/sidenav';
 
 @Component({
-  selector: 'app-second',
-  standalone: true,
-  imports: [
-    MatCardModule,
-    FormsModule,
-    ReactiveFormsModule,
-    MatInputModule,
-    MatSelectModule,
-    MatFormFieldModule,
-    MatButtonToggleModule,
-    MatSlideToggleModule,
-    MatChipsModule,
-    MatIconModule,
-    MatButtonModule,
-    MatCheckboxModule,
-    MatSidenavModule,
-  ],
-  templateUrl: './second.component.html',
-  styleUrl: './second.component.scss'
+    selector: 'app-second',
+    imports: [
+        MatCardModule,
+        FormsModule,
+        ReactiveFormsModule,
+        MatInputModule,
+        MatSelectModule,
+        MatFormFieldModule,
+        MatButtonToggleModule,
+        MatSlideToggleModule,
+        MatChipsModule,
+        MatIconModule,
+        MatButtonModule,
+        MatCheckboxModule,
+        MatSidenavModule,
+    ],
+    templateUrl: './second.component.html',
+    styleUrl: './second.component.scss'
 })
 export class SecondComponent {}

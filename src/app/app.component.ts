@@ -9,23 +9,21 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { ViewEncapsulation } from '@angular/core';
 
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [
-    RouterOutlet,
-    RouterLink,
-    RouterLinkActive,
-    MatButtonModule,
-    MatButtonToggleModule,
-    MatSlideToggleModule,
-    MatFormFieldModule,
-    MatSelectModule,
-    FormsModule,
-    ReactiveFormsModule,
-  ],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss',
-  //encapsulation: ViewEncapsulation.ShadowDom,
+    selector: 'app-root',
+    imports: [
+        RouterOutlet,
+        RouterLink,
+        RouterLinkActive,
+        MatButtonModule,
+        MatButtonToggleModule,
+        MatSlideToggleModule,
+        MatFormFieldModule,
+        MatSelectModule,
+        FormsModule,
+        ReactiveFormsModule,
+    ],
+    templateUrl: './app.component.html',
+    styleUrl: './app.component.scss'
 })
 export class AppComponent {
   title = 'angular_18_mockup';

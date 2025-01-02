@@ -9,12 +9,11 @@ import {MatButtonModule} from '@angular/material/button';
 import { ViewEncapsulation } from '@angular/core';
 
 @Component({
-  selector: 'app-first-first',
-  standalone: true,
-  imports: [MatFormFieldModule, MatSelectModule, FormsModule, ReactiveFormsModule, MatButtonModule, MatDividerModule, MatIconModule],
-  templateUrl: './first-first.component.html',
-  styleUrl: './first-first.component.scss',
-  encapsulation: ViewEncapsulation.ShadowDom,
+    selector: 'app-first-first',
+    imports: [MatFormFieldModule, MatSelectModule, FormsModule, ReactiveFormsModule, MatButtonModule, MatDividerModule, MatIconModule],
+    templateUrl: './first-first.component.html',
+    styleUrl: './first-first.component.scss',
+    encapsulation: ViewEncapsulation.ShadowDom
 })
 export class FirstFirstComponent {
   toppings = new FormControl('');

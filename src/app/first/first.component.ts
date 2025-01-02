@@ -13,20 +13,18 @@ import { ViewEncapsulation } from '@angular/core';
 
 
 @Component({
-  selector: 'app-first',
-  standalone: true,
-  imports: [
-    MatButtonModule,
-    MatIconModule,
-    MatFormFieldModule,
-    MatSelectModule,
-    MatInputModule,
-    FormsModule,
-    FirstFirstComponent
-],
-  templateUrl: './first.component.html',
-  styleUrl: './first.component.scss',
-  // encapsulation: ViewEncapsulation.ShadowDom,
+    selector: 'app-first',
+    imports: [
+        MatButtonModule,
+        MatIconModule,
+        MatFormFieldModule,
+        MatSelectModule,
+        MatInputModule,
+        FormsModule,
+        FirstFirstComponent
+    ],
+    templateUrl: './first.component.html',
+    styleUrl: './first.component.scss'
 })
 export class FirstComponent {
 }
