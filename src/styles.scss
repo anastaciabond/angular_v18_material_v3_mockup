@@ -52,7 +52,8 @@ Explanation of mat.get-theme-color method. There are two ways to use it (https:/
     It gets the color, defined by light/dark theme and reacts on its change.
 */
 
-@include mat.core();
+@include mat.elevation-classes();
+@include mat.app-background();
 
 // Defines DEFAULT THEME styles for your app.
 :root {
