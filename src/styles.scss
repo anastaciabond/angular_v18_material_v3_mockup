@@ -1,15 +1,16 @@
 @use "@angular/material" as mat;
-//@use "assets/common/css/material-theme_purple/light" as light;
-//@use "assets/common/css/material-theme_purple/dark" as dark;
-
-@use "assets/common/helped-classes";
-@use "assets/common/css/mat-chip-custom-title/mat-chip-custom-title.scss" as chip-custom-title;
-@use "assets/common/css/mat-select-custom/mat-select-custom.scss" as mat-select-custom;
-
 
 // *************************************************************************************************************
 // Angular v18 theming thru mat.define-theme mixin. ************************************************************
 // *************************************************************************************************************
+
+//@use "assets/common/css/material-theme_purple/light" as light;
+//@use "assets/common/css/material-theme_purple/dark" as dark;
+
+//@use "assets/common/helped-classes";
+//@use "assets/common/css/mat-chip-custom-title/mat-chip-custom-title.scss" as chip-custom-title;
+//@use "assets/common/css/mat-select-custom/mat-select-custom.scss" as mat-select-custom;
+
 /*
 // Apply theme for the app. ************************************************************************************
 $app-dark-theme: mat.define-theme((
@@ -95,6 +96,15 @@ Explanation of mat.get-theme-color method. There are two ways to use it (https:/
 //   }
 // }
 
+// Rewrite theme tokens which do not meet custom theme. ********************************************************
+//:root {
+//   //--mdc-switch-track-shape: 9999px; // basic
+//   //--mdc-switch-track-shape: 0; // new value
+//   //--mat-form-field-filled-label-display: block;
+//   --mdc-extended-fab-label-text-size: 1rem;
+//  --mdc-filled-text-field-container-color: var(--md-sys-color-primary);
+//}
+
 // *************************************************************************************************************
 // END Angular v18 theming thru mat.define-theme mixin. ********************************************************
 // *************************************************************************************************************
@@ -105,7 +115,7 @@ Explanation of mat.get-theme-color method. There are two ways to use it (https:/
 // Angular v19 theming thru mat.theme() mixin. *****************************************************************
 // *************************************************************************************************************
 html {
-  color-scheme: light dark;
+  color-scheme: light;
   @include mat.theme((
     //'Color' parameter is commented because we use custom tokens thru mat.theme-overrides mixin without creating palette.
     //color: mat.$orange-palette,
@@ -130,7 +140,7 @@ html {
     on-error: rgb(255 255 255),
     error-container: rgb(255 218 214),
     on-error-container: rgb(65 0 2),
-    background: rgb(255 248 248),
+    background: rgb(225, 197, 208),
     on-background: rgb(38 24 28),
     surface: rgb(255 248 248),
     on-surface: rgb(38 24 28),
@@ -164,14 +174,10 @@ html {
     surface-container-highest: rgb(246 220 226),
   ));
 }
-
-// Rewrite theme tokens which do not meet custom theme. ********************************************************
-:root {
-  //   //--mdc-switch-track-shape: 9999px; // basic
-  //   //--mdc-switch-track-shape: 0; // new value
-  //   //--mat-form-field-filled-label-display: block;
-  //   --mdc-extended-fab-label-text-size: 1rem;
-  //  --mdc-filled-text-field-container-color: var(--md-sys-color-primary);
+// Set background and text color due to Angular v19.
+.app-background {
+  background: var(--mat-sys-background);
+  color: var(--mat-sys-on-background);
 }
 
 // Reboot styles. ***********************************************************************************************
@@ -227,12 +233,12 @@ p /*, h1, h2, h3, h4, h5, h6*/ {
 // **************************************************************************************************************
 
 // Apply new custom design values for mat-slide-toggle in app-second component.
-app-second {
+/*app-second {
   mat-slide-toggle {
     transform: scale(0.85);
     translate: -5px;
   }
-}
+}*/
 
 // app-first-first .button-shadow-dom-styles {
 //   background-color: rgb(57, 146, 146);
