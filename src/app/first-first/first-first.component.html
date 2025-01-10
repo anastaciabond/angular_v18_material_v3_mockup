@@ -1,4 +1,4 @@
-<h4 class="title-style">First-first component</h4>
+<h4>First-first component</h4>
 <mat-form-field>
     <mat-label>Toppings</mat-label>
     <mat-select [formControl]="toppings" multiple>
@@ -11,14 +11,14 @@
         }
       </mat-select-trigger>
       @for (topping of toppingList; track topping) {
-    <mat-option [value]="topping">{{topping}}</mat-option>
-  }
+        <mat-option [value]="topping">{{topping}}</mat-option>
+      }
     </mat-select>
-  </mat-form-field>
-  <a mat-fab extended class="button-shadow-dom-styles">
-    <mat-icon>favorite</mat-icon>
-    Link
-  </a>
+</mat-form-field>
+<a mat-fab extended class="button-shadow-dom-styles">
+  <mat-icon>favorite</mat-icon>
+  Link
+</a>
 <form>
   <app-component-mat-select></app-component-mat-select>
 </form>

@@ -14,7 +14,7 @@ import { ComponentMatSelectComponent } from "../shared/component-mat-select/comp
   imports: [MatFormFieldModule, MatSelectModule, FormsModule, ReactiveFormsModule, MatButtonModule, MatDividerModule, MatIconModule, ComponentMatSelectComponent],
     templateUrl: './first-first.component.html',
     styleUrl: './first-first.component.scss',
-    // encapsulation: ViewEncapsulation.ShadowDom
+    //encapsulation: ViewEncapsulation.ShadowDom,
 })
 export class FirstFirstComponent {
   toppings = new FormControl('');

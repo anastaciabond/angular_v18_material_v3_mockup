@@ -19,7 +19,7 @@ interface Food {
   ],
   templateUrl: './component-mat-select.component.html',
   styleUrl: './component-mat-select.component.scss',
-  encapsulation: ViewEncapsulation.ShadowDom,
+  //encapsulation: ViewEncapsulation.ShadowDom,
 })
 export class ComponentMatSelectComponent {
   selectedValue: string;

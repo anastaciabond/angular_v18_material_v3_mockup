@@ -26,7 +26,7 @@ import { ComponentMatSelectComponent } from "../shared/component-mat-select/comp
     ],
     templateUrl: './first.component.html',
     styleUrl: './first.component.scss',
-    encapsulation: ViewEncapsulation.ShadowDom,
+    //encapsulation: ViewEncapsulation.ShadowDom,
 })
 export class FirstComponent {
 }
