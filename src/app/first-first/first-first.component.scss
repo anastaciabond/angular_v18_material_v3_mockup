@@ -2,20 +2,13 @@
 @import "https://fonts.googleapis.com/icon?family=Material+Icons";
 
 :host {
+  --mat-icon-color: #ffee00;
     display: block;
-    background-color: silver;
-    --mat-icon-color: #ffee00;
+    padding: 10px;
+    border: 1px dashed var(--mat-sys-primary-container);
+    background-color: var(--mat-sys-inverse-primary);
 }
 
-@mixin color($theme) {
-  .button-shadow-dom-styles {
-      //background-color: rgba(0, 255, 255, 0.514);
-      background-color: mat.get-theme-color($theme, primary, 60);
-  }
-}
-
-@mixin theme($theme) {
-  @if mat.theme-has($theme, color) {
-    @include color($theme);
-  }
+.title-style {
+  color: var(--mat-sys-primary);
 }

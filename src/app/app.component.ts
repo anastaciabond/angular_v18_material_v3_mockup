@@ -7,6 +7,9 @@ import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatSelectModule} from '@angular/material/select';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { ViewEncapsulation } from '@angular/core';
+import { ComponentButtonToggleGroupComponent } from "./shared/component-button-toggle-group/component-button-toggle-group.component";
+import { ComponentButtonComponent } from "./shared/component-button/component-button.component";
+import { ComponentMatSelectComponent } from "./shared/component-mat-select/component-mat-select.component";
 
 @Component({
     selector: 'app-root',
@@ -21,14 +24,13 @@ import { ViewEncapsulation } from '@angular/core';
         MatSelectModule,
         FormsModule,
         ReactiveFormsModule,
+        ComponentButtonToggleGroupComponent,
+        ComponentButtonComponent,
+        ComponentMatSelectComponent,
     ],
     templateUrl: './app.component.html',
     styleUrl: './app.component.scss'
 })
 export class AppComponent {
   title = 'angular_18_mockup';
-
-  toppings = new FormControl('');
-
-  toppingList: string[] = ['Extra cheese', 'Mushroom', 'Onion', 'Pepperoni', 'Sausage', 'Tomato'];
 }

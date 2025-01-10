@@ -1,0 +1,18 @@
+@use "@angular/material" as mat;
+
+$green-10: #a3dda3;
+$green-20: #76c876;
+$green-30: #52b352;
+$green-40: #2c8c2c;
+$green-50: #176c17;
+$green-90: #193219;
+
+mat-button-toggle-group {
+  @include mat.button-toggle-overrides((
+    background-color: $green-20,
+    text-color: $green-90,
+    selected-state-background-color: $green-50,
+    selected-state-text-color: $green-10,
+    height: 30px,
+  ));
+}

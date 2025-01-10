@@ -1,0 +1,39 @@
+@use "@angular/material" as mat;
+
+$orange-10: #d393e8;
+$orange-20: #d5a54a;
+$orange-30: #b87f17;
+$orange-40: #915e00;
+$orange-90: #422c05;
+
+:host {
+  --mdc-filled-text-field-container-color: #{$orange-10};
+  --mat-form-field-container-height: 10px;
+  //--cl-mdc-text-field-padding: 0px; // For overriding styles in Emulated encapsulation.
+}
+
+// For overriding styles in ShadowDom encapsulation.
+.mdc-text-field {
+  padding: 0 6px;
+}
+
+mat-form-field {
+  @include mat.select-overrides((
+    enabled-trigger-text-color: $orange-40,
+    trigger-text-size: 18px,
+    trigger-text-weight: 700,
+  ));
+}
+
+.block-output {
+  display: flex;
+  font-weight: bold;
+}
+.block-output-title-style {
+  color: var(--mat-sys-secondary);
+}
+.block-output-value-style {
+  color: var(--mat-sys-primary);
+}
+
+

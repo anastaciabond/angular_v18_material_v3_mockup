@@ -1,15 +1,8 @@
-@use '@angular/material' as mat;
-// :host {
-//   // Apply new custom design values for mat-slide-toggle.
-//   --mdc-switch-track-shape: 10px;
-//   --mdc-switch-track-width: 42px;
-//   --mdc-switch-track-height: 26px;
-//   --mat-switch-with-icon-handle-size: 20px;
-//   --mat-switch-unselected-with-icon-handle-horizontal-margin: 0 3px;
-//   --mat-switch-selected-with-icon-handle-horizontal-margin: 0 20px
-//   --mat-switch-label-text-line-height: 0.8rem;
-//   --mat-switch-label-text-size: 0.875rem;
-// }
+:host {
+    display: block;
+    padding: 10px;
+    border: 1px solid var(--mat-sys-primary);
+}
 
 /* **************************** Grid for controls ********************************* */
 /* Calculate grid-item height due to row count. */
@@ -58,8 +51,7 @@ $grid-row-height: 60px;
   position: relative;
   z-index: 1;
   display: grid;
-  //grid-template-columns: repeat(12, minmax($grid-column-width, 1fr));
-  grid-template-columns: repeat(14, minmax($grid-column-width, 1fr));
+  grid-template-columns: repeat(12, minmax($grid-column-width, 1fr));
   grid-template-rows: $grid-row-height;
   /* This will ON constant height for controls:
   grid-auto-rows: $grid-row-height;
@@ -70,32 +62,4 @@ $grid-row-height: 60px;
 .controls-flex {
     display: flex !important;
     align-items: center;
-    // p {
-    //   display: flex;
-    //   align-items: center;
-    //   margin-top: 3px;
-    //   margin-bottom: 0;
-    //   margin-right: 1ex;
-    //   height: 100%;
-    // }
-}
-
-
-.mat-button-toggle-group-custom-density {
-    @include mat.button-toggle-density(-5);
-}
-
-.example-container {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-}
-
-.example-events {
-  width: 300px;
-  height: 200px;
-  overflow: auto;
-  border: 1px solid #555;
 }

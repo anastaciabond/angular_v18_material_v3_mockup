@@ -1,11 +1,6 @@
-:host {
-  //--mdc-filled-text-field-label-text-color: #bdf86b;
-  //--mat-form-field-filled-label-display: block;
-}
-
 .main {
-    height: 50%;
     padding: 0 10%;
+    border: 3px solid var(--mat-sys-primary);
 }
 .block-top {
     display: flex;

@@ -213,33 +213,16 @@ hr:not([size]) {
 /* Reset margins on paragraphs.
 Similarly, the top margin on `<p>`s get reset. However, we also reset the
 bottom margin to use `rem` units instead of `em`. */
-p /*, h1, h2, h3, h4, h5, h6*/ {
+p, h1, h2, h3, h4, h5, h6 {
   margin-top: 0 !important;
   margin-bottom: 0 !important;
 }
-
-
-// Button density ready-to-go classes. Include this class in the block, which wraps the button. *********************
-// .button-density-3 {
-//   @include mat.button-density(-3);
-// }
-// .button-density-4 {
-//   @include mat.button-density(-4);
-// }
-// .button-density-5 {
-//   @include mat.button-density(-5);
-// }
-
 // **************************************************************************************************************
 
-// Apply new custom design values for mat-slide-toggle in app-second component.
-/*app-second {
-  mat-slide-toggle {
-    transform: scale(0.85);
-    translate: -5px;
+// For overriding styles in Emulated encapsulation.*************************************************************
+app-component-mat-select {
+  .mdc-text-field {
+    padding: 0 var(--cl-mdc-text-field-padding, 16px);
   }
-}*/
-
-// app-first-first .button-shadow-dom-styles {
-//   background-color: rgb(57, 146, 146);
-// }
+}
+// END For overriding styles in Emulated encapsulation.*********************************************************

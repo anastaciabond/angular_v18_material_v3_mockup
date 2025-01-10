@@ -1,0 +1,13 @@
+<mat-form-field>
+  <mat-label>Favorite food</mat-label>
+  <mat-select [(ngModel)]="selectedValue" name="food">
+    @for (food of foods; track food) {
+      <mat-option [value]="food.value">{{food.viewValue}}</mat-option>
+    }
+  </mat-select>
+</mat-form-field>
+<div class="block-output">
+    <p class="block-output-title-style">Selected food:</p>
+    &nbsp;
+    <span class="block-output-value-style">{{selectedValue}}</span>
+</div>
