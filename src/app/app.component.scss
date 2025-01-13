@@ -1,6 +1,16 @@
-.main {
-    padding: 0 10%;
+@use "../assets/common/helped-classes" as helped;
+
+.main-wrapper {
+  @include helped.make-main-wrapper();
+  display: flex;
+  flex-direction: column;
+}
+.main-block {
+    padding: 0.5%;
     border: 3px solid var(--mat-sys-primary);
+}
+.router-block {
+  flex: 1;
 }
 .block-top {
     display: flex;

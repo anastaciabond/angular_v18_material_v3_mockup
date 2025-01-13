@@ -1,0 +1,7 @@
+@use "../../assets/common/helped-classes" as helped;
+
+.main-wrapper {
+  @include helped.make-main-wrapper();
+  display: flex;
+  flex-direction: column;
+}

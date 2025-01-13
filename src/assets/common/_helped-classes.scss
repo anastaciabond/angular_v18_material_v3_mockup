@@ -1,6 +1,7 @@
-.align-center {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
+@mixin make-main-wrapper() {
+  display: block;
+  min-width: 100%;
+  width: 100%;
+  min-height: 100%;
+  height: 100%;
 }

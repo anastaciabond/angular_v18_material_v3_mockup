@@ -1,7 +1,7 @@
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 
-<main class="main">
-  <div class="content">
+<div class="main-wrapper">
+  <div class="main-block">
     <div class="block-top">
       <div class="left-side">
         <h2>App component</h2>
@@ -18,16 +18,20 @@
       </div>
     </div>
   </div>
-</main>
 
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+  <div class="main-block">
+    <h1>Angular Router App</h1>
+    <nav>
+      <ul>
+        <li><a routerLink="/first-comp" routerLinkActive="active" ariaCurrentWhenActive="page">First Component</a></li>
+        <li><a routerLink="/second-comp" routerLinkActive="active" ariaCurrentWhenActive="page">Second Component</a></li>
+        <li><a routerLink="/dashboard" routerLinkActive="active" ariaCurrentWhenActive="page">Dashboard</a></li>
+      </ul>
+    </nav>
+  </div>
 
-<h1>Angular Router App</h1>
-<nav>
-  <ul>
-    <li><a routerLink="/first-comp" routerLinkActive="active" ariaCurrentWhenActive="page">First Component</a></li>
-    <li><a routerLink="/second-comp" routerLinkActive="active" ariaCurrentWhenActive="page">Second Component</a></li>
-  </ul>
-</nav>
-<!-- The routed views render in the <router-outlet>-->
-<router-outlet></router-outlet>
+  <!-- The routed views render in the <router-outlet>-->
+  <div class="main-block router-block">
+    <router-outlet></router-outlet>
+  </div>
+</div>
