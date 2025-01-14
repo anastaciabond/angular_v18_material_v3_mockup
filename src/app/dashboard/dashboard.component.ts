@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { AgGridAngular } from 'ag-grid-angular'; // Angular Data Grid Component
-import type { ColDef } from 'ag-grid-community'; // Column Definition Type Interface
 import {
+  ColDef, // Column Definition Type Interface
   ModuleRegistry,
   RowApiModule,
   ClientSideRowModelModule,
+  themeBalham, // Add built-in theme.
 } from 'ag-grid-community';
 
 ModuleRegistry.registerModules([
@@ -29,6 +30,8 @@ interface IRow {
   styleUrl: './dashboard.component.scss'
 })
 export class DashboardComponent {
+  public theme = themeBalham; // Set built-in theme.
+
   // Row Data: The data to be displayed.
   rowData: IRow[] = [
     { make: "Tesla", model: "Model Y", price: 64950, electric: true },
