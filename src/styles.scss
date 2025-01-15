@@ -1,6 +1,11 @@
 @use "@angular/material" as mat;
 @use "assets/common/helped-classes" as helped;
 
+:root {
+  // Ag Grid custom CSS tokens which are used in theming object in component.
+  --ag-grid-headerFontSize: 20px;
+}
+
 // *************************************************************************************************************
 // Angular v18 theming thru mat.define-theme mixin. ************************************************************
 // *************************************************************************************************************

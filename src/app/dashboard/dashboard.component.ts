@@ -6,26 +6,14 @@ import {
   RowApiModule,
   ClientSideRowModelModule,
   themeBalham, // Add built-in theme.
+  iconSetMaterial, // Add icons.
 } from 'ag-grid-community';
+import { MatCheckbox } from "@angular/material/checkbox";
 
 ModuleRegistry.registerModules([
   RowApiModule,
   ClientSideRowModelModule,
 ]);
-
-// Customizing Ag Grid built-in theme by changing CSS tokens.
-const myTheme = themeBalham.withParams({
-  /* Low spacing = very compact */
-  spacing: 2,
-  /* Changes the color of the grid text */
-  foregroundColor: 'rgb(14, 68, 145)',
-  /* Changes the color of the grid background */
-  backgroundColor: 'rgb(241, 247, 255)',
-  /* Changes the header color of the top row */
-  headerBackgroundColor: 'rgb(228, 237, 250)',
-  /* Changes the hover color of the row*/
-  rowHoverColor: 'rgb(216, 226, 255)',
-});
 
 // Row Data Interface
 interface IRow {
@@ -38,14 +26,64 @@ interface IRow {
 @Component({
   selector: 'app-dashboard',
   imports: [
-    AgGridAngular, // Add Angular Data Grid Component
+    AgGridAngular,
+    MatCheckbox,
   ],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'
 })
 export class DashboardComponent {
-  //public theme = themeBalham; // Set built-in theme.
-  public theme = myTheme; // Set customized theme.
+  // Set built-in theme.
+  //public theme = themeBalham;
+
+  // Customizing Ag Grid built-in theme by changing CSS tokens.
+  public theme = themeBalham
+    .withPart(iconSetMaterial)
+    .withParams(
+      {
+        accentColor: "#D1EF067D",
+        backgroundColor: "#07240D",
+        borderRadius: 4,
+        browserColorScheme: "dark",
+        cellHorizontalPaddingScale: 1,
+        columnBorder: true,
+        fontFamily: {
+          googleFont: "Merriweather"
+        },
+        fontSize: 13,
+        foregroundColor: "#D4E8C6",
+        headerFontSize: "var(--ag-grid-headerFontSize)",
+        iconSize: 16,
+        oddRowBackgroundColor: "#031006",
+        rowVerticalPaddingScale: 1,
+        spacing: 3,
+        wrapperBorderRadius: 0
+      },
+      "green-dark",
+    )
+    .withParams(
+      {
+        accentColor: "rgb(133,230,16)",
+        backgroundColor: "#dff1c5",
+        borderRadius: 4,
+        browserColorScheme: "dark",
+        cellHorizontalPaddingScale: 1,
+        columnBorder: true,
+        fontFamily: {
+          googleFont: "Merriweather"
+        },
+        fontSize: 13,
+        foregroundColor: "#2d5512",
+        headerFontSize: "var(--ag-grid-headerFontSize)",
+        iconSize: 16,
+        oddRowBackgroundColor: { ref: "accentColor", mix: 0.05 },
+        rowVerticalPaddingScale: 1,
+        spacing: 3,
+        wrapperBorderRadius: 0
+      },
+      "green-light",
+    )
+  ;
 
   // Row Data: The data to be displayed.
   rowData: IRow[] = [
@@ -68,4 +106,12 @@ export class DashboardComponent {
   defaultColDef: ColDef = {
     flex: 1,
   };
+
+  public setDarkMode(enabled: boolean) {
+    document.body.dataset["agThemeMode"] = enabled ? "green-dark" : "green-light";
+  }
+
+  ngOnInit() {
+    this.setDarkMode(false); // Set Ag Grid theme mode for first render.
+  }
 }
