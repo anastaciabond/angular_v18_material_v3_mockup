@@ -13,6 +13,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import { ComponentButtonToggleGroupComponent } from "../shared/component-button-toggle-group/component-button-toggle-group.component";
 import { ComponentButtonComponent } from "../shared/component-button/component-button.component";
+import { AgGridComponent } from "../table/ag-grid/ag-grid.component";
 
 @Component({
     selector: 'app-second',
@@ -33,6 +34,7 @@ import { ComponentButtonComponent } from "../shared/component-button/component-b
     MatSidenavModule,
     ComponentButtonToggleGroupComponent,
     ComponentButtonComponent,
+    AgGridComponent,
   ],
     templateUrl: './second.component.html',
     styleUrl: './second.component.scss'

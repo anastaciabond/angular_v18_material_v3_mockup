@@ -1,5 +1,10 @@
 @use "../../assets/common/helped-classes" as helped;
 
+:host {
+  --ag-grid-dark-header-text-color: #739bf1;
+  --ag-grid-light-header-text-color: #215fe4;
+}
+
 .main-wrapper {
   @include helped.make-main-wrapper();
   display: flex;

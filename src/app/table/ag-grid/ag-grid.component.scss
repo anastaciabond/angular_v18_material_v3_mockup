@@ -1,0 +1,30 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  // Custom Ag Grid tokens:
+  --ag-grid-cell-horizontal-padding-scale: 2;
+  --ag-grid-font-size: 13px;
+  --ag-grid-header-font-size: calc(var(--ag-grid-font-size) * 1.5);
+  --ag-grid-spacing: 3px;
+  --ag-grid-wrapper-border-radius: 0px;
+  // Dark Theme.
+  --ag-grid-dark-accent-color: #D1EF067D;
+  --ag-grid-dark-background-color: #07240D;
+  --ag-grid-dark-border-color: var(--ag-grid-dark-foreground-color);
+  --ag-grid-dark-browser-color-scheme: dark;
+  --ag-grid-dark-font-family: Pixelify;
+  --ag-grid-dark-foreground-color: #D4E8C6;
+  //--ag-grid-dark-header-text-color: #508c08;
+  --ag-grid-dark-odd-row-background-color: #1f3724;
+  // Light Theme.
+  --ag-grid-light-accent-color: #85E610;
+  --ag-grid-light-background-color: #dff1c5;
+  --ag-grid-light-border-color: var(--ag-grid-light-foreground-color);
+  --ag-grid-light-browser-color-scheme: light;
+  --ag-grid-light-font-family: Merriweather;
+  --ag-grid-light-foreground-color: #2d5512;
+  //--ag-grid-light-header-text-color: #85E610;
+  --ag-grid-light-odd-row-background-color: #e5e8e1;
+}

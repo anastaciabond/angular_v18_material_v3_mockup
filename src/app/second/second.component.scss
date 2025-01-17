@@ -1,7 +1,18 @@
 :host {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
     padding: 10px;
     border: 1px solid var(--mat-sys-primary);
+
+    --ag-grid-dark-header-text-color: #b886f4;
+    --ag-grid-light-header-text-color: #8e3fef;
+}
+
+.main-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 /* **************************** Grid for controls ********************************* */
